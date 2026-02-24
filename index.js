@@ -1,53 +1,20 @@
+const dns = require('node:dns/promises');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 require('dotenv').config();
 
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '8.8.4.4']);  
+const app = require('./app');
+const connectDB = require('./config/db');
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const PORT = process.env.PORT || 3000;
 
-const app = express();
-
-
-app.use(cors());
-app.use(express.json());
-
-
-const PORT = process.env.PORT || 5000;
-
-
-console.log('MONGO_URI from env:', process.env.MONGO_URI || 'NOT FOUND IN .env');
-
-
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('MongoDB Connected Successfully! 🎉'))
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+      console.log(`API Docs: http://localhost:${PORT}/api-docs`);
+    });
+  })
   .catch(err => {
-    console.error('MongoDB Connection Failed:', err.message);
-    console.error('Full error:', err);
+    console.error('Failed to start server:', err.message);
   });
-
-
-app.use('/api/products', require('./src/routes/productRoutes'));
-app.use('/api/cart', require('./src/routes/cartRoutes'));
-app.use('/api/favorites', require('./src/routes/favoriteRoutes'));
-
-
-app.get('/', (req, res) => {
-  res.send('E-commerce Backend Running 🚀 | Port: ' + PORT);
-});
-
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-
-
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Closing server...');
-  process.exit(0);
-});
