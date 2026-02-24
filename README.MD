@@ -72,5 +72,5 @@ Connect to a React frontend
 
 Thanks for checking out my project!
 Feel free to reach out if you have any questions or feedback.
-Made with ❤️ by Raj Karan
+Made with ❤️ by Akanksha Jaiswal
 (AlmaBetter Full Stack Learner)
