@@ -1,76 +1,62 @@
-Hi everyone! 👋  
-This is my backend project for the AlmaBetter Full Stack Web Development course (Backend Development Capstone). I built a simple e-commerce API using Node.js, Express, and MongoDB. It covers all the required features: listing products, filtering by category, adding to cart, and managing favourites.
+# E-Commerce Capstone Project (Full Stack)
+
+Full Stack E-commerce website backend (Node.js + Express + MongoDB) aur frontend (React) ke saath – Capstone project complete.
 
 ## Features
-- Get all products (GET /api/products)  
-- Get products by category (GET /api/products/:category)  
-- Add product to cart (POST /api/cart)  
-- View cart items (GET /api/cart)  
-- Add product to favourites (POST /api/favorites)  
-- View favourites (GET /api/favorites)  
+- Backend:
+  - Products API (GET all, GET by category)
+  - Cart API (POST add, GET cart items)
+  - Favorites API (POST add, GET favorites)
+  - MongoDB Atlas connection
+  - Swagger API documentation[](http://localhost:3000/api-docs)
+  - Logging with morgan
 
-All data is stored in MongoDB Atlas. The API returns success responses so the frontend can show toast messages like "Product added to cart!".
+- Frontend:
+  - Products list with category filter
+  - Add to Cart + Add to Favorites buttons
+  - Toast notifications (react-hot-toast)
+  - Cart & Favorites pages
+  - Responsive UI
 
 ## Tech Stack
-- Node.js  
-- Express.js (for routing & server)  
-- Mongoose (MongoDB ORM)  
-- MongoDB Atlas (free cloud database)  
-- dotenv (for environment variables)  
-- nodemon (auto-restart during development)
+- Backend: Node.js, Express, MongoDB (Atlas), Mongoose, Swagger
+- Frontend: React, React Router, Axios, React Icons, React Hot Toast
 
-## How to Run the Project
+## How to Run Locally
 
-1. Clone the repo  
-   ```bash
-   git clone https://github.com/yourusername/ecommerce-backend.git
-   cd ecommerce-backend
+### Prerequisites
+- Node.js installed
+- MongoDB Atlas account (free tier) – MONGO_URI .env mein daal dena
 
-Install dependenciesBashnpm install
-Create a .env file in the root folder and add:textPORT=5000
-MONGO_URI=mongodb+srv://<your-username>:<your-password>@cluster0.mtaqs3o.mongodb.net/ecomdb?retryWrites=true&w=majority(Get your MONGO_URI from MongoDB Atlas dashboard)
-Start the serverBashnpm run devYou should see something like:textMongoDB Connected Successfully!
-Server running on port 5000
-Add sample products (run once)Bashnode src/seed.jsThis inserts 5 demo products into the database.
+### Backend Setup
+1. Backend folder mein ja:
+cd backend
+text2. Install dependencies:
+npm install
+text3. .env file bana aur ye daal:
+PORT=3000
+MONGO_URI=your-atlas-uri-here
+text4. Run backend:
+npm run dev
+text### Frontend Setup
+1. Frontend folder mein ja:
+cd frontend
+text2. Install dependencies:
+npm install
+text3. Run frontend:
+npm start
+textAb browser mein **http://localhost:3000** kholo – products dikhege, add to cart/fav try kar sakte ho.
 
-API Endpoints (Test with Postman)
+### API Documentation
+Backend chalane ke baad Swagger docs: **http://localhost:3000/api-docs**
 
+### Screenshots
+(Apne screenshots daal dena – products page, cart page, toast, swagger wagairah)
 
-MethodEndpointDescriptionRequest Body (for POST)GET/api/productsGet all products-GET/api/products/:categoryGet products by category-POST/api/cartAdd product to cart{ "productId": "id_here" }GET/api/cartGet cart items-POST/api/favoritesAdd product to favourites{ "productId": "id_here" }GET/api/favoritesGet favourites list-
-Test root route: http://localhost:5000 → "E-commerce Backend Running 🚀"
-Folder Structure
-textecommerce-backend/
-├── src/
-│   ├── models/           # Product, Cart, Favorite schemas
-│   ├── routes/           # productRoutes.js, cartRoutes.js, favoriteRoutes.js
-│   └── seed.js           # Inserts sample products
-├── index.js              # Main server file
-├── .env                  # Secrets (gitignore'd)
-├── package.json
-└── README.md
-How I Tested
+## Deployment
+- Frontend: Netlify / Vercel
+- Backend: Render.com (free tier)
 
-Used Postman to hit every endpoint
-Checked data directly in MongoDB Atlas
-Made sure add to cart/favourites returns success
+Project complete hai – Full Stack E-commerce app ready for demo!
 
-(You can find Postman screenshots in the repo or in my submission video)
-What I Learned
-
-How to structure Express routes properly
-Creating Mongoose schemas and using population
-Connecting to MongoDB Atlas
-Seeding data for quick testing
-Handling async/await with try-catch
-
-Future Plans
-
-Add user authentication (JWT)
-Allow quantity updates in cart
-Add delete from cart/favourites
-Connect to a React frontend
-
-Thanks for checking out my project!
-Feel free to reach out if you have any questions or feedback.
-Made with ❤️ by Akanksha Jaiswal
-(AlmaBetter Full Stack Learner)
+Made with ❤️ by Akanksha
