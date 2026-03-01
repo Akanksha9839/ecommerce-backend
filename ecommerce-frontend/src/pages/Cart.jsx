@@ -8,11 +8,13 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchCart = async () => {
+      setLoading(true);
       try {
-        const res = await axios.get('http://localhost:3000/cart/user1');
+        const res = await axios.get('https://ecommerce-backend-1feg.onrender.com/cart/user1');
+        console.log('Cart data fetched:', res.data); // debug ke liye
         setCartItems(res.data);
       } catch (err) {
-        console.error(err);
+        console.error('Cart fetch error:', err.message || err.response?.data);
       } finally {
         setLoading(false);
       }
@@ -20,16 +22,23 @@ const Cart = () => {
     fetchCart();
   }, []);
 
-  if (loading) return <div className="text-center py-20 text-xl">Loading cart...</div>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-600"></div>
+        <span className="ml-4 text-xl">Loading cart...</span>
+      </div>
+    );
+  }
 
   const total = cartItems.reduce((sum, item) => sum + (item.productId?.price * item.quantity || 0), 0);
 
   return (
-    <div>
+    <div className="pt-20">
       <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">Your Cart</h1>
-      
+
       {cartItems.length === 0 ? (
-        <div className="text-center text-xl text-gray-600">Your cart is empty</div>
+        <div className="text-center text-xl text-gray-600">Your cart is empty. Start shopping!</div>
       ) : (
         <div className="space-y-6">
           {cartItems.map(item => (
@@ -50,6 +59,7 @@ const Cart = () => {
               </p>
             </div>
           ))}
+
           <div className="bg-white p-6 rounded-xl shadow-md mt-8">
             <div className="flex justify-between text-2xl font-bold">
               <span>Total</span>
