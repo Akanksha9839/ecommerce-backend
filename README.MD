@@ -1,62 +1,93 @@
 # E-Commerce Capstone Project (Full Stack)
 
-Full Stack E-commerce website backend (Node.js + Express + MongoDB) aur frontend (React) ke saath – Capstone project complete.
+
+Backend for E-commerce application using Node.js, Express & MongoDB Atlas
 
 ## Features
-- Backend:
-  - Products API (GET all, GET by category)
-  - Cart API (POST add, GET cart items)
-  - Favorites API (POST add, GET favorites)
-  - MongoDB Atlas connection
-  - Swagger API documentation[](http://localhost:3000/api-docs)
-  - Logging with morgan
+- GET /products – All products
+- GET /products/:category – Category filter
+- POST /cart – Add to cart
+- GET /cart/:userId – View cart
+- POST /favorites – Add to favorites
+- GET /favorites/:userId – View favorites
+- Swagger API docs: /api-docs
+- Logging with morgan
 
-- Frontend:
-  - Products list with category filter
-  - Add to Cart + Add to Favorites buttons
-  - Toast notifications (react-hot-toast)
-  - Cart & Favorites pages
-  - Responsive UI
+## Live API
+https://ecommerce-backend-1feg.onrender.com/api-docs
 
-## Tech Stack
-- Backend: Node.js, Express, MongoDB (Atlas), Mongoose, Swagger
-- Frontend: React, React Router, Axios, React Icons, React Hot Toast
+## Local Setup
+1. `npm install`
+2. Create `.env`:PORT=3000
+MONGO_URI=your-atlas-uritext3. `npm run dev`
 
-## How to Run Locally
+Made by Akanksha
+Capstone Project – Full Stack Web Development# E-Commerce Backend – Capstone Project
 
-### Prerequisites
-- Node.js installed
-- MongoDB Atlas account (free tier) – MONGO_URI .env mein daal dena
+Complete backend for an E-commerce application built with Node.js, Express, and MongoDB Atlas.  
+This project fulfills all requirements for the Full Stack Web Development Capstone, including RESTful APIs, database integration, logging, and Swagger documentation.
 
-### Backend Setup
-1. Backend folder mein ja:
-cd backend
-text2. Install dependencies:
-npm install
-text3. .env file bana aur ye daal:
-PORT=3000
-MONGO_URI=your-atlas-uri-here
-text4. Run backend:
-npm run dev
-text### Frontend Setup
-1. Frontend folder mein ja:
-cd frontend
-text2. Install dependencies:
-npm install
-text3. Run frontend:
-npm start
-textAb browser mein **http://localhost:3000** kholo – products dikhege, add to cart/fav try kar sakte ho.
+## ✨ Features
 
-### API Documentation
-Backend chalane ke baad Swagger docs: **http://localhost:3000/api-docs**
+- Get all products: `GET /products`
+- Get products by category: `GET /products/:category` (e.g. `/products/electronics`)
+- Add item to cart: `POST /cart` (body: userId, productId, quantity)
+- Get user cart: `GET /cart/:userId`
+- Add item to favorites: `POST /favorites` (body: userId, productId)
+- Get user favorites: `GET /favorites/:userId`
+- Interactive API documentation with Swagger: `/api-docs`
+- Request logging with Morgan
+- MongoDB Atlas cloud database
+- CORS enabled for frontend integration
+- Deployed on Render (free tier)
 
-### Screenshots
-(Apne screenshots daal dena – products page, cart page, toast, swagger wagairah)
+## 🛠 Tech Stack
 
-## Deployment
-- Frontend: Netlify / Vercel
-- Backend: Render.com (free tier)
+- Node.js + Express.js  
+- MongoDB Atlas + Mongoose  
+- Swagger UI (for API documentation)  
+- Morgan (logging)  
+- CORS  
+- dotenv (environment variables)  
+- Hosted on Render.com
 
-Project complete hai – Full Stack E-commerce app ready for demo!
+## 🚀 Live API
 
-Made with ❤️ by Akanksha
+- Base URL: https://ecommerce-backend-1feg.onrender.com  
+- Swagger Documentation: https://ecommerce-backend-1feg.onrender.com/api-docs
+
+## 📋 Local Setup Instructions
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Akanksha9839/ecommerce-backend.git
+   cd ecommerce-backend
+
+Install dependenciesBashnpm install
+Create .env file in root and add:envPORT=3000
+MONGO_URI=your-mongodb-atlas-connection-string
+Start the serverBashnpm run dev
+Open Swagger docs: http://localhost:3000/api-docs
+
+🧪 API Testing
+All endpoints are tested with Postman / Swagger.
+Sample responses:
+
+GET /products → returns array of products
+POST /cart → { message: "Added to cart", cart: {...} }
+POST /favorites → { message: "Added to favorites" }
+
+
+Deployment
+
+Platform: Render.com (free tier)
+Auto-deploy connected to GitHub
+Environment variables set: PORT, MONGO_URI
+Service restarts automatically on git push
+
+Author
+Akanksha
+Full Stack Web Development Capstone Project
+March 2026
+Made with ❤️ and lots of debugging sessions
+text
